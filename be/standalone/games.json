@@ -1,0 +1,483 @@
+[{
+    "name": "7 Days to Die",
+    "fields": {
+      "server_ip": "",
+      "server_port": "25000",
+      "server_query_port": "25001",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "ACE Online",
+    "fields": {
+      "url": "",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "Aion",
+    "fields": {
+      "url": "",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "ARK Survival Ascended",
+    "fields": {
+      "server_ip": "",
+      "server_port": "7777",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "ARK Survival Evolved",
+    "fields": {
+      "server_ip": "",
+      "server_port": "7777",
+      "server_query_port": "27015",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "Arma 3",
+    "fields": {
+      "server_ip": "",
+      "server_port": "2302",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "Battle of the Immortals",
+    "fields": {
+      "url": "",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "Black Desert Online",
+    "fields": {
+      "url": "",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "Cabal Online",
+    "fields": {
+      "url": "",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "Conquer Online",
+    "fields": {
+      "url": "",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "Counter Strike 1.6",
+    "fields": {
+      "server_ip": "",
+      "server_port": "27015",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "Counter Strike 2",
+    "fields": {
+      "server_ip": "",
+      "server_port": "27015",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "Counter-Strike - Global Offensive",
+    "fields": {
+      "server_ip": "",
+      "server_port": "27015",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "Counter-Strike - Source",
+    "fields": {
+      "server_ip": "",
+      "server_port": "27015",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "DayZ",
+    "fields": {
+      "server_ip": "",
+      "server_port": "2302",
+      "server_query_port": "27016",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "Dekaron",
+    "fields": {
+      "url": "",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "Diablo",
+    "fields": {
+      "url": "",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "Discord Servers",
+    "fields": {
+      "url": "",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "Dragon Nest",
+    "fields": {
+      "url": "",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "Fiesta Online",
+    "fields": {
+      "url": "",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "Flyff",
+    "fields": {
+      "url": "",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "Garry's Mod",
+    "fields": {
+      "server_ip": "",
+      "server_port": "27015",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "Half Life",
+    "fields": {
+      "server_ip": "",
+      "server_port": "27015",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "Hell Let Loose",
+    "fields": {
+      "server_ip": "",
+      "server_port": "",
+      "server_query_port": "27015",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "Iris Online",
+    "fields": {
+      "url": "",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "Knight Online",
+    "fields": {
+      "url": "",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "Last Chaos",
+    "fields": {
+      "url": "",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "Left 4 Dead 2",
+    "fields": {
+      "server_ip": "",
+      "server_port": "27015",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "Lineage 2",
+    "fields": {
+      "url": "",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "Luna Online",
+    "fields": {
+      "url": "",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "MapleStory",
+    "fields": {
+      "url": "",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "Metin2",
+    "fields": {
+      "url": "",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "Minecraft",
+    "fields": {
+      "server_ip": "",
+      "server_port": "25565",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "MMORPG & MPOG",
+    "fields": {
+      "url": "",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "Mu Online",
+    "fields": {
+      "url": "",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "OGame",
+    "fields": {
+      "url": "",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "Perfect World",
+    "fields": {
+      "url": "",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "Priston Tale",
+    "fields": {
+      "url": "",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "Project Zomboid",
+    "fields": {
+      "server_ip": "",
+      "server_port": "16261",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "Ragnarok Online",
+    "fields": {
+      "url": "",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "Ran Online",
+    "fields": {
+      "url": "",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "RF Online",
+    "fields": {
+      "url": "",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "Runescape",
+    "fields": {
+      "url": "",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "Rust",
+    "fields": {
+      "server_ip": "",
+      "server_port": "28015",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "Shaiya",
+    "fields": {
+      "url": "",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "Silkroad Online",
+    "fields": {
+      "url": "",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "Squad",
+    "fields": {
+      "server_ip": "",
+      "server_port": "7787",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "SwordsMan",
+    "fields": {
+      "url": "",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "Tales of Pirates",
+    "fields": {
+      "url": "",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "Team Fortress 2",
+    "fields": {
+      "server_ip": "",
+      "server_port": "27015",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "Terraria",
+    "fields": {
+      "url": "",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "Travian",
+    "fields": {
+      "url": "",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "Ultima Online",
+    "fields": {
+      "url": "",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "Unturned",
+    "fields": {
+      "server_ip": "",
+      "server_port": "27015",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "V Rising",
+    "fields": {
+      "server_ip": "",
+      "server_port": "9876",
+      "server_query_port": "9877",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "Valheim",
+    "fields": {
+      "server_ip": "",
+      "server_port": "2456",
+      "title": "",
+      "description": ""
+    }
+  },
+  {
+    "name": "World of Warcraft",
+    "fields": {
+      "url": "",
+      "title": "",
+      "description": ""
+    }
+  }
+]

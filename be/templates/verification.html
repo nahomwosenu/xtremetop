@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email Verification</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      border: 1px solid #e3e3e3;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+    }
+    .brand-logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .brand-logo img {
+      width: 150px;
+    }
+    .btn-verify {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 4px;
+      text-decoration: none;
+    }
+    .btn-verify:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="brand-logo">
+      <img width="250" src="http://localhost:5173/images/logo.png" alt="Top Gaming Servers Logo">
+    </div>
+    <h2>Verify Your Email</h2>
+    <p>Hello <strong>{{name}}</strong>,</p>
+    <p>Thank you for signing up for Top Gaming Servers. Please confirm your email address by clicking the button below:</p>
+    <div class="text-center">
+      <a href="{{verificationLink}}" class="btn btn-verify">Verify Email</a>
+    </div>
+    <p>If you did not sign up for this account, you can ignore this email.</p>
+    <p>Thank you,<br>Top Gaming Servers Team</p>
+  </div>
+
+  <!-- Bootstrap CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

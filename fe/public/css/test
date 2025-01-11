@@ -1,0 +1,25 @@
+const Anticheatbox: React.VFC = () => {
+  return (
+    <div className="anticheatbox">
+      <img src="" />
+      <div className="group">
+        <img src="" />
+        <img src="" />
+        <img src="" />
+      </div>
+    </div>
+  )
+}
+
+.anticheatbox {
+  height: 300px;
+  width: 257px;
+}
+.group {
+  height: 77px;
+  width: 70px;
+}
+.img-1 {
+  height: 77px;
+  width: 69px;
+}
