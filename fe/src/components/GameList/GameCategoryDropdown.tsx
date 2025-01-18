@@ -18,13 +18,13 @@ const GameCategoryDropdown: React.FC<GameCategoryDropdownProps> = ({ isOpen = fa
         <>
             {isOpen && (
                 <div
-                    className="absolute bg-blue-900 left-1/2 transform -translate-x-1/2 mt-2 w-full max-w-screen-lg rounded-lg shadow-lg z-10 p-4 overflow-auto max-h-[80vh]"
+                    className="absolute bg-blue-900 left-1/2 transform -translate-x-1/2 mt-2 min-w-max rounded-lg shadow-lg z-10 p-2 overflow-auto min-h-max"
                 >
-                    <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-6">
+                    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2">
                         {Object.keys(categorizedGames)
                             .sort()
                             .map((letter) => (
-                                <div key={letter} className="p-2 bg-blue-800 rounded-lg">
+                                <div key={letter} className="bg-blue-800 rounded-lg">
                                     <h3 className="font-bold text-white border-b-2 border-yellow-400 mb-2 text-center">
                                         {letter}
                                     </h3>

@@ -1,18 +1,11 @@
 import React, { FC, useEffect, useState } from 'react';
-import {
-  FaFacebookF,
-  FaInstagram,
-  FaYoutube,
-  FaTelegramPlane,
-  FaTwitterSquare,
-  FaDiscord,
-  FaFacebookSquare
-} from 'react-icons/fa';
 import { RiDiscordFill, RiFacebookCircleFill, RiInstagramFill, RiTelegramFill, RiTwitterFill, RiYoutubeFill } from 'react-icons/ri';
+import { useTranslation } from '../../context/TranslationContext';
 
 interface FooterProps { }
 
 const Footer: FC<FooterProps> = () => {
+  const { t } = useTranslation();
   const [timeRemaining, setTimeRemaining] = useState({
     days: 0,
     hours: 5,
@@ -52,12 +45,11 @@ const Footer: FC<FooterProps> = () => {
 
   return (
     <footer className='w-full text-[#687b92] font-roman'>
-      {/* Top section */}
       <div className='bg-[#133155] py-4 w-full h-auto'>
         <div className='flex justify-between items-center mx-auto px-4 md:px-8'>
           <div className='flex justify-between items-center'>
             <p className='text-sm text-white flex-1 md:text-left px-2'>
-              Connect With Us
+              {t('footer.links.connectWithUs')}
             </p>
 
             <div className='flex space-x-4 px-2'>
@@ -83,43 +75,42 @@ const Footer: FC<FooterProps> = () => {
           </div>
           <div className='flex-1 text-sm md:text-right mt-2 md:mt-0'>
             <a href='#' className='hover:text-blue-500 text-white mr-4'>
-              Forum
+              {t('footer.links.forum')}
             </a>
             <span className='mr-2 text-white'>|</span>
             <a href='#' className='hover:text-blue-500 text-white mr-4'>
-              Terms
+              {t('footer.links.terms')}
             </a>
             <span className='mr-2 text-white'>|</span>
             <a href='#' className='hover:text-blue-500 text-white mr-4'>
-              Privacy
+              {t('footer.links.privacy')}
             </a>
             <span className='mr-2 text-white'>|</span>
             <a href='#' className='hover:text-blue-500 text-white mr-4'>
-              FAQ
+              {t('footer.links.faq')}
             </a>
             <span className='mr-2 text-white'>|</span>
             <a href='#' className='hover:text-blue-500 text-white'>
-              Contact
+              {t('footer.links.contact')}
             </a>
           </div>
         </div>
       </div>
 
-      {/* Bottom section */}
       <div className='bg-[#161b33] flex items-center justify-center py-4 px-4 md:px-8 w-full h-auto border-t border-t-[#F6B723]'>
         <div className='flex justify-between items-center mx-auto px-2 md:px-1 w-full'>
           <div className='flex-1 text-center md:text-left text-white text-sm'>
-            © {new Date().getFullYear()} All Rights Reserved || XTREAMETOP
+            {t('footer.copyright', { year: new Date().getFullYear() })}
           </div>
           <div className='flex-1 text-center text-sm text-white'>
-            Toplist reset in{' '}
+            {t('footer.toplistReset')}
             <span>
-              {timeRemaining.days} days, {timeRemaining.hours} hours, and{" "}
-              {timeRemaining.minutes} minutes
+              {timeRemaining.days} {t('footer.timeRemaining.days')}, {timeRemaining.hours} {t('footer.timeRemaining.hours')}, and{" "}
+              {timeRemaining.minutes} {t('footer.timeRemaining.minutes')}
             </span>
           </div>
           <div className='flex-1 text-center md:text-right text-sm text-white'>
-            Tracking {serverCount.toLocaleString()} servers
+            {t('footer.trackingServers')} {serverCount} {t('footer.servers')}
           </div>
         </div>
       </div>

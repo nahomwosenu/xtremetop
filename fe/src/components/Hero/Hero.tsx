@@ -1,6 +1,10 @@
-import React, { FC } from 'react';
+import React, { FC, useContext, useState } from 'react';
 import { FaCheck } from 'react-icons/fa';
 import { useTranslation } from '../../context/TranslationContext';
+import ServersList from '../Servers/ServersList';
+import ServerMenu from '../shared/ServerMenu';
+import { ServerContext } from '../../context/ServerContext';
+import { useSearch } from '../../context/SearchContext';
 
 
 interface HeroProps {
@@ -12,7 +16,14 @@ interface HeroProps {
 
 const Hero: FC<HeroProps> = ({ label1, label2, description, hero = false }) => {
   const { t } = useTranslation();
+  const [showServers, setShowServers] = useState(false);
+  const { servers } = useContext(ServerContext);
+  const { searchTerm, setSearchTerm } = useSearch();
 
+  const launchServers = (e: any) => {
+    e.preventDefault();
+    setShowServers(!showServers);
+  }
   return (<div className="bg-cover bg-center py-8 mt-4">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <img src="/images/logo.svg" className='mx-auto my-4' />
@@ -32,14 +43,14 @@ const Hero: FC<HeroProps> = ({ label1, label2, description, hero = false }) => {
           </h2>
           <p className="mt-8 text-2xl text-white font-franklin">{t("hero.default.description")}</p>
           <ul className="mt-2 max-w-lg space-y-1 text-white list-inside dark:text-gray-400 m-auto p-2 mb-8">
-            <li className="flex items-center">
-              <img src="/images/checkmark.svg" />&nbsp;<span className='ms-2'>{t("hero.default.benefits.1")}</span>
+            <li className="flex items-center min-w-max">
+              <img src="/images/checkmark.svg" />&nbsp;<span className='ms-2 text-start min-w-max'>{t("hero.default.benefits.1")}</span>
             </li>
             <li className="flex items-center">
-              <img src="/images/checkmark.svg" />&nbsp;<span className='ms-2'>{t("hero.default.benefits.2")}</span>
+              <img src="/images/checkmark.svg" />&nbsp;<span className='ms-2 text-start min-w-max'>{t("hero.default.benefits.2")}</span>
             </li>
             <li className="flex items-center">
-              <img src="/images/checkmark.svg" />&nbsp;<span className='ms-2'>{t("hero.default.benefits.3")}</span>
+              <img src="/images/checkmark.svg" />&nbsp;<span className='ms-2 text-start min-w-max'>{t("hero.default.benefits.3")}</span>
             </li>
           </ul>
           <form className="max-w-xl mx-auto">
@@ -55,16 +66,23 @@ const Hero: FC<HeroProps> = ({ label1, label2, description, hero = false }) => {
                 id="default-search"
                 className="block w-full p-2 ps-10 text-lg text-black placeholder-black border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder={t("hero.default.search_placeholder")}
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
                 required
               />
               <button
-                type="submit"
+                type="button"
+                onClick={launchServers}
                 className="text-black absolute end-1.5 top-1.5 bottom-1.5 bg-[#f6b723] hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
                 {t("hero.default.search_button")}
                 <img src="/images/caret_black.svg" className='inline-block p-2' />
               </button>
+
             </div>
+            {
+              (showServers || searchTerm) && <><ServerMenu letter={''} servers={servers.flatMap((server) => server.title)} /></>
+            }
           </form>
         </>
       )}

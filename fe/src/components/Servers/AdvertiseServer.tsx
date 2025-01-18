@@ -10,6 +10,7 @@ import { Advert, useAdvertContext } from '../../context/AdvertContext';
 import PaymentModal from '../Payment/PaymentModal';
 import { IAdvertSlot, useAdvertSlot } from './AdvertSlotContext';
 import { Select as FlowbiteSelect, Label } from 'flowbite-react';
+import { useTranslation } from '../../context/TranslationContext';
 
 const FieldMap = {
     server_ip: "Server IP",
@@ -22,6 +23,7 @@ const FieldMap = {
 
 const AdvertiseServer = () => {
     const { games } = useContext(GameContext);
+    const { t } = useTranslation();
     const [game, setGame] = useState<Game>();
     const [slot, setSlot] = useState<IAdvertSlot>();
     const { handleSubmit, control, formState: { errors }, watch, register } = useForm();
@@ -129,19 +131,18 @@ const AdvertiseServer = () => {
     return (
         <div className="flex justify-center bg-[#161B33] py-10 text-white">
             <div className="w-full max-w-6xl p-8 rounded-lg shadow-md">
-
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Form Section */}
                     <div className="flex flex-col bg-[#133155] p-6 rounded-lg border border-[#F6B723]">
                         <form onSubmit={createAd}>
                             <div className="mb-4">
                                 <Select
-                                    label='Select Slot'
+                                    label={t('advertise.selectSlot')}
                                     options={advertSlots?.sort((s: IAdvertSlot, s2: IAdvertSlot) => s2.pricePerDay - s.pricePerDay)?.map((slot: IAdvertSlot) => ({
                                         label: `${slot.slot} (${slot.bannerHeight} x ${slot.bannerWidth})`,
                                         value: slot._id
                                     }))}
-                                    placeholder='Select Slot'
+                                    placeholder={t('advertise.selectSlot')}
                                     onChange={(slotId) => setSlot(advertSlots?.find((s: IAdvertSlot) => s?._id === slotId))}
                                     value={slot?._id}
                                     darkMode={true}
@@ -150,31 +151,30 @@ const AdvertiseServer = () => {
 
                             <div className="mb-4">
                                 <Select
-                                    label='Select Game'
+                                    label={t('advertise.selectGame')}
                                     options={games.map((game) => ({ label: game.name, value: game._id }))}
-                                    placeholder='Select a Game'
+                                    placeholder={t('advertise.selectGame')}
                                     onChange={(gameId) => setGame(games?.find((g) => g._id == gameId))}
                                     value={game?._id}
                                     darkMode={true}
-
                                 />
                             </div>
 
                             <div className="mb-4">
-                                <label className="block text-sm font-medium mb-2">*Banner Title:</label>
+                                <label className="block text-sm font-medium mb-2">{t('advertise.bannerTitle')}</label>
                                 <input
                                     type="text"
-                                    {...register('title', { required: 'Banner title is required' })}
-                                    placeholder='Catchy banner title'
+                                    {...register('title', { required: t('advertise.bannerTitleRequired') })}
+                                    placeholder={t('advertise.bannerTitlePlaceholder')}
                                     className="w-full px-3 py-2 bg-[#133155] border border-[#F6B723] rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500" />
                             </div>
 
                             <div className="mb-4">
-                                <label className="block text-sm font-medium mb-2">*Server Tags:</label>
+                                <label className="block text-sm font-medium mb-2">{t('advertise.serverTags')}</label>
                                 <input
-                                    {...register('tags', { required: 'Add at least one server tag' })}
+                                    {...register('tags', { required: t('advertise.serverTagsRequired') })}
                                     type="text"
-                                    placeholder="comma separated list of tags e.g tag1, tag2"
+                                    placeholder={t('advertise.serverTagsPlaceholder')}
                                     className="w-full px-3 py-2 bg-[#133155] border border-[#F6B723] rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
                                 />
                                 <div className="flex gap-2 mt-2">
@@ -187,7 +187,7 @@ const AdvertiseServer = () => {
                             </div>
 
                             {slot && <div className="mb-4">
-                                <label className="block text-sm font-medium mb-2">*Banner Image:</label>
+                                <label className="block text-sm font-medium mb-2">{t('advertise.bannerImage')}</label>
                                 <input type="file" className="w-full px-3 py-2 bg-[#133155] border border-[#F6B723] rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
                                     accept="image/*"
                                     onChange={handleImageUpload}
@@ -195,25 +195,25 @@ const AdvertiseServer = () => {
                             </div>}
 
                             <div className="mb-4">
-                                <label className="block text-sm font-medium mb-2">*Website:</label>
+                                <label className="block text-sm font-medium mb-2">{t('advertise.website')}</label>
                                 <input
                                     type="url"
-                                    {...register('website', { required: 'Enter a valid website url' })}
-                                    placeholder="Website e.g https://tpg.com" className="w-full px-3 py-2 bg-[#133155] border border-[#F6B723] rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500" />
+                                    {...register('website', { required: t('advertise.websiteRequired') })}
+                                    placeholder={t('advertise.websitePlaceholder')} className="w-full px-3 py-2 bg-[#133155] border border-[#F6B723] rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500" />
                             </div>
 
                             <div className="mb-4">
-                                <label className="block text-sm font-medium mb-2">*Email:</label>
+                                <label className="block text-sm font-medium mb-2">{t('advertise.email')}</label>
                                 <input
                                     type="email"
-                                    {...register('email', { required: 'Email is required' })}
-                                    placeholder="email@mail.com" className="w-full px-3 py-2 bg-[#133155] border border-[#F6B723] rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500" />
+                                    {...register('email', { required: t('advertise.emailRequired') })}
+                                    placeholder={t('advertise.emailPlaceholder')} className="w-full px-3 py-2 bg-[#133155] border border-[#F6B723] rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500" />
                             </div>
 
                             <div className="mb-4">
                                 <div className="max-w-md">
                                     <div className="mb-2 block">
-                                        <Label htmlFor="period" className='text-white' value="*Period Days" />
+                                        <Label htmlFor="period" className='text-white' value={t('advertise.periodDays')} />
                                     </div>
                                     <Controller
                                         name="period"
@@ -228,21 +228,18 @@ const AdvertiseServer = () => {
                                                 required>
                                                 {Array.from({ length: 30 }, (_, index) => (
                                                     <option key={index + 1} value={index + 1}>
-                                                        {index + 1} Days
+                                                        {index + 1} {t('advertise.days')}
                                                     </option>
                                                 ))}
                                             </FlowbiteSelect>
                                         )}
                                     />
-
                                 </div>
                             </div>
-
-
                         </form>
                         <div className="flex justify-between items-center mt-auto">
-                            <span className="text-xl font-avenir">Total Price: <span className='text-[#F6B723]'>${calculatedAmount.toFixed(2)}</span></span>
-                            <button type="submit" onClick={createAd} className="px-6 py-2 bg-[#F6B723] hover:bg-yellow-600 text-black font-semibold rounded-lg">CONTINUE</button>
+                            <span className="text-xl font-avenir">{t('advertise.totalPrice')}: <span className='text-[#F6B723]'>${calculatedAmount.toFixed(2)}</span></span>
+                            <button type="submit" onClick={createAd} className="px-6 py-2 bg-[#F6B723] hover:bg-yellow-600 text-black font-semibold rounded-lg">{t('advertise.continue')}</button>
                         </div>
                     </div>
                     <PaymentModal
@@ -251,24 +248,34 @@ const AdvertiseServer = () => {
                         amount={Number(amountToPay)}
                         onSuccess={postPaymentHandler}
                     />
-
                     {/* Info Section */}
                     <div className="flex flex-col bg-[#133155] rounded-lg border border-[#F6B723] font-franklin">
-                        <h3 className="m-6 md:mt-12 text-xl font-bold text-yellow-300">AVAILABLE TO BUY NOW</h3>
+                        <h3 className="m-6 md:mt-12 text-xl font-bold text-yellow-300">{t('advertise.availableToBuyNow')}</h3>
                         <div className="m-4 md:mt-8 space-y-4">
-                            <img src="/images/advertise_exc.png" alt="Banner Preview" className="w-full rounded-lg mb-4" />
-                            <div className='pt-2 md:pt-8'><span className='text-xl mt-4'>VIP ADS</span><p className="text-sm mb-2 ms-4 text-[#A1ADBB] font-avenir" style={{ fontWeight: 400 }}>The biggest ad of 250x1000 pixels. <br /> Banner located in the right or left side of the background</p></div>
-                            <div><span className='text-xl mt-2'>SPONSOR SERVER</span><p className="text-sm mb-2 ms-4 text-[#A1ADBB] font-avenir" style={{ fontWeight: 400 }}>A big ad of 955x90 pixels.<br /> Banner located avbove rank 1 on the toplist</p></div>
-                            <div><span className='text-xl mt-2'>TOP ADS</span><p className="text-sm mb-2 ms-4 text-[#A1ADBB] font-avenir" style={{ fontWeight: 400 }}>Banner size of 468x60 pixels <br /> We display 5 ads per rotation <br /><span className='text-[#8A8F95] font-avenir'>Note: if there are 6 or more advertisers, we rotate all ads (5 by 5 in random order) for each visitor so all banners get on top #1 one by one.</span></p></div>
+                            <img src="/images/advertise_exc.png" alt={t('advertise.bannerPreview')} className="w-full rounded-lg mb-4" />
+                            <div className='pt-2 md:pt-8'>
+                                <span className='text-xl mt-4'>{t('advertise.vipAds')}</span>
+                                <p className="text-sm mb-2 ms-4 text-[#A1ADBB] font-avenir" style={{ fontWeight: 400 }}>{t('advertise.vipAdsDescription')}</p>
+                            </div>
+                            <div>
+                                <span className='text-xl mt-2'>{t('advertise.sponsorServer')}</span>
+                                <p className="text-sm mb-2 ms-4 text-[#A1ADBB] font-avenir" style={{ fontWeight: 400 }}>{t('advertise.sponsorServerDescription')}</p>
+                            </div>
+                            <div>
+                                <span className='text-xl mt-2'>{t('advertise.topAds')}</span>
+                                <p className="text-sm mb-2 ms-4 text-[#A1ADBB] font-avenir" style={{ fontWeight: 400 }}>{t('advertise.topAdsDescription')}</p>
+                            </div>
                         </div>
                         <div className="text-yellow-400 mt-auto text-sm border border-yellow-500 w-full p-2 ps-4">
-                            Want to track your payments? <br /> <span className='text-white'> Please <Link to={'/login'} className='text-yellow-400'>Login</Link> into your account and buy while logged in.</span>
+                            {t('advertise.trackPayments')} <br />
+                            <span className='text-white'>{t('advertise.loginToBuy')}</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     );
+
 };
 
 export default AdvertiseServer;

@@ -13,23 +13,35 @@ import { RegionProvider } from './context/RegionContext';
 import Advertise from './pages/Advertise';
 import { AdvertPaymentProvider } from './context/AdvertPaymentContext';
 import MyDashboard from './pages/MyDashboard';
+import { SearchProvider } from './context/SearchContext';
 
 function App() {
 
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/register" element={<ServerProvider><RegionProvider> <Register /></RegionProvider></ServerProvider>} />
-        <Route path="/login" element={<ServerProvider> <Login /></ServerProvider>} />
-        <Route path='/games' element={<Games />} />
-        <Route path='/edit-account' element={<EditAccount />} />
-        <Route path='/servers' element={<ServerProvider> <ReviewProvider><Servers /></ReviewProvider></ServerProvider>} />
-        <Route path="/premium" element={<ServerProvider><ReviewProvider><Premium /></ReviewProvider></ServerProvider>} />
-        <Route path="/add-site" element={<ServerProvider><RegionProvider> <AdvertPaymentProvider><Advertise /></AdvertPaymentProvider></RegionProvider></ServerProvider>} />
-        <Route path="/dashboard" element={<ServerProvider><RegionProvider> <AdvertPaymentProvider><MyDashboard /></AdvertPaymentProvider></RegionProvider></ServerProvider>} />
-      </Routes>
-    </Router>
+    <ServerProvider> {/* Wrap with ServerProvider */}
+      <RegionProvider> {/* Wrap with RegionProvider */}
+        <ReviewProvider> {/* Wrap with ReviewProvider */}
+          <AdvertPaymentProvider> {/* Wrap with AdvertPaymentProvider */}
+            <SearchProvider>
+              <Router>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/register" element={<Register />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/games" element={<Games />} />
+                  <Route path="/edit-account" element={<EditAccount />} />
+                  <Route path="/servers" element={<Servers />} />
+                  <Route path="/premium" element={<Premium />} />
+                  <Route path="/add-site" element={<Advertise />} />
+                  <Route path="/advertise" element={<Advertise />} />
+                  <Route path="/dashboard" element={<MyDashboard />} />
+                </Routes>
+              </Router>
+            </SearchProvider>
+          </AdvertPaymentProvider>
+        </ReviewProvider>
+      </RegionProvider>
+    </ServerProvider>
   );
 }
 

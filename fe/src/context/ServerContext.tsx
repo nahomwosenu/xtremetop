@@ -1,6 +1,6 @@
 /* eslint-disable no-useless-catch */
 // src/contexts/ServerContext.tsx
-import React, { createContext, useState, ReactNode } from 'react';
+import React, { createContext, useState, ReactNode, useEffect } from 'react';
 import { SERVER } from '../Constants';
 
 export interface Server {
@@ -98,6 +98,14 @@ export const ServerProvider: React.FC<ServerProviderProps> = ({ children }) => {
         }
         return null;
     }
+
+    useEffect(() => {
+        console.log('###fetch servers');
+        fetchServers()
+    }, [])
+    useEffect(() => {
+        console.log('###>servers', servers);
+     },[servers]);
 
     return (
         <ServerContext.Provider value={{ servers, loading, fetchServers, addServer, cached }}>

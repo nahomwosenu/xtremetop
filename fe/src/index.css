@@ -31,37 +31,57 @@
 }
 
 @font-face {
-  font-family: "customMedium";
-  src: url("/fonts/medium.ttf") format('truetype');
+  font-family: 'customMedium';
+  src: url('/fonts/medium.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: "customBlack";
-  src: url("/fonts/black.ttf") format('truetype');
+  font-family: 'customBlack';
+  src: url('/fonts/black.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: "customBook";
-  src: url("/fonts/book.ttf") format('truetype');
+  font-family: 'customBook';
+  src: url('/fonts/book.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: "customRoman";
-  src: url("/fonts/roman.ttf") format('truetype');
+  font-family: 'customRoman';
+  src: url('/fonts/roman.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: "avenirRoman";
-  src: url("/fonts/avenir_roman_55.otf") format('opentype');
+  font-family: 'avenirRoman';
+  src: url('/fonts/avenir_roman_55.otf') format('opentype');
 }
 
 @font-face {
-  font-family: "franklinGothic";
-  src: url("/fonts/franklin_ghotic.otf") format('opentype');
+  font-family: 'franklinGothic';
+  src: url('/fonts/franklin_ghotic.otf') format('opentype');
+}
+
+.bebas-neue-regular {
+  font-family: 'Bebas Neue', serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 26.4px;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 26.4px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+
+.questrial-regular {
+  font-family: 'Questrial', serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 26.4px;
 }
 
 .lang-icon {
-    background-image: url(/images/lang-flags.png);
+  background-image: url(/images/lang-flags.png);
 }
 
 body {
