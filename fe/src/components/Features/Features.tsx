@@ -100,7 +100,7 @@ const Features: FC<FeaturesProps> = () => {
   ];
 
   return (<div className="bg-[#161b33] py-12 mt-0">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16">
       <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
         {topFeatures.map((feature, index) => (
           <div key={index} className="bg-[#133155] h-80 w-66 rounded-lg p-6 shadow-lg transform hover:scale-105 transition duration-300 ease-in-out flex flex-col items-center justify-center border-2 border-yellow-400 hover:border-yellow-200"

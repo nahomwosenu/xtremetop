@@ -3,7 +3,7 @@ import translations from "../assets/translation.json";
 import { useLocation, useNavigate } from "react-router-dom";
 
 interface TranslationContextProps {
-    t: (key: string) => string;
+    t: (key: string, ...rest: string[]) => string;
     currentLanguage: string;
     setLanguage: (lang: string) => void;
 }
@@ -28,12 +28,23 @@ export const TranslationProvider: React.FC<{ children: React.ReactNode }> = ({ c
     const setLanguage = (lang: string) => {
         setCurrentLanguage(lang);
         // Update the URL without reloading
-        navigate(`/${lang}`, { replace: true });
+        //navigate(`/${lang}`, { replace: true });
     };
 
     // Translation function
-    const t = (key: string): string => {
-        return translations[currentLanguage as keyof typeof translations]?.[key] || key;
+    const t = (key: string, ...rest: string[]): string => {
+        let translated = translations[currentLanguage as keyof typeof translations]?.[key] || key;
+
+        if (rest && rest.length > 0) {
+            let replacementIndex = 0;
+            translated = translated.replace(/\{([^}]+)\}/g, (match, placeholder) => {
+                if (replacementIndex < rest.length) {
+                    return rest[replacementIndex++];
+                }
+                return match; // If no replacement available, keep the placeholder
+            });
+        }
+        return translated;
     };
 
     return (

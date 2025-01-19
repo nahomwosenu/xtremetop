@@ -11,7 +11,7 @@ import {
 } from "react-icons/ri";
 import { AuthContext } from "../../context/AuthContext";
 
-interface NavProps {}
+interface NavProps { }
 
 const Nav: FC<NavProps> = () => {
   const { activeNav, setActiveNav } = useNav();
@@ -41,12 +41,11 @@ const Nav: FC<NavProps> = () => {
 
   const navLinks = [
     { label: t("nav.home"), id: "home", route: "/" },
-    { label: t("nav.add_server"), id: "add_site", route: "/add-site" },
+    { label: t("nav.add_server"), id: "add_site", route: "/register" },
     {
       label: t("nav.edit_account"),
       id: "edit_account",
-      route: "/edit-account",
-      auth: true,
+      route: "/login"
     },
     { label: t("nav.select_game"), id: "select_game", route: "#" },
     { label: t("nav.premium"), id: "premium", route: "/premium" },
@@ -62,7 +61,7 @@ const Nav: FC<NavProps> = () => {
 
   return (
     <nav className="bg-transparent border-0 border-b-2 border-yellow-400">
-      <div className="mx-auto px-8 md:px-16 lg:px-64">
+      <div className="mx-auto px-10 sm:px-16 md:px-24 lg:px-48 xl:px-96">
         <div className="flex items-center justify-between h-16">
           {/* Mobile menu button */}
           <div className="md:hidden">
@@ -112,11 +111,10 @@ const Nav: FC<NavProps> = () => {
 
           {/* Navigation links */}
           <div
-            className={`flex-1 flex items-center justify-between ${
-              isMobileMenuOpen
-                ? "block bg-gray-700 z-10 mt-auto pt-4 w-full"
-                : "hidden"
-            } md:flex`}
+            className={`flex-1 flex items-center justify-between ${isMobileMenuOpen
+              ? "block bg-gray-700 z-10 mt-auto pt-4 w-full"
+              : "hidden"
+              } md:flex`}
           >
             <div className="flex items-center w-full">
               {/* Adjust padding/margin to maintain fixed spacing */}

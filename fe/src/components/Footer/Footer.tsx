@@ -46,7 +46,7 @@ const Footer: FC<FooterProps> = () => {
   return (
     <footer className='w-full text-[#687b92] font-roman'>
       <div className='bg-[#133155] py-4 w-full h-auto'>
-        <div className='flex justify-between items-center mx-auto px-4 md:px-8'>
+        <div className='flex justify-between items-center mx-auto px-10 sm:px-16 md:px-24 lg:px-48 xl:px-96'>
           <div className='flex justify-between items-center'>
             <p className='text-sm text-white flex-1 md:text-left px-2'>
               {t('footer.links.connectWithUs')}
@@ -97,16 +97,15 @@ const Footer: FC<FooterProps> = () => {
         </div>
       </div>
 
-      <div className='bg-[#161b33] flex items-center justify-center py-4 px-4 md:px-8 w-full h-auto border-t border-t-[#F6B723]'>
+      <div className='bg-[#161b33] flex items-center justify-center py-4 px-10 sm:px-16 md:px-24 lg:px-48 xl:px-96 w-full h-auto border-t border-t-[#F6B723]'>
         <div className='flex justify-between items-center mx-auto px-2 md:px-1 w-full'>
           <div className='flex-1 text-center md:text-left text-white text-sm'>
-            {t('footer.copyright', { year: new Date().getFullYear() })}
+            {t('footer.copyright').toUpperCase()}
           </div>
           <div className='flex-1 text-center text-sm text-white'>
             {t('footer.toplistReset')}
             <span>
-              {timeRemaining.days} {t('footer.timeRemaining.days')}, {timeRemaining.hours} {t('footer.timeRemaining.hours')}, and{" "}
-              {timeRemaining.minutes} {t('footer.timeRemaining.minutes')}
+              {t('footer.timeRemaining', timeRemaining.days.toString(), timeRemaining.hours.toString(), timeRemaining.minutes.toString())}
             </span>
           </div>
           <div className='flex-1 text-center md:text-right text-sm text-white'>

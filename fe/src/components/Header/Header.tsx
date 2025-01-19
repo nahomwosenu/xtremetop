@@ -25,7 +25,7 @@ import { ServerContext } from "../../context/ServerContext";
 import ServerMenu from "../shared/ServerMenu";
 import { useSearch } from "../../context/SearchContext";
 
-interface HeaderProps {}
+interface HeaderProps { }
 
 const Header: FC<HeaderProps> = () => {
   const { currentLanguage, setLanguage, t } = useTranslation();
@@ -68,7 +68,7 @@ const Header: FC<HeaderProps> = () => {
 
   return (
     <div className="bg-gradient-to-r from-[#133155] to-[#2A6CBB] text-white flex justify-center items-center">
-      <div className="py-4 flex justify-between items-center px-8 md:px-16 lg:px-64 w-full">
+      <div className="py-4 flex justify-between items-center px-10 sm:px-16 md:px-24 lg:px-48 xl:px-96 w-full">
         <div className="bebas-neue-regular">{t("header.promo")}</div>
         {path.pathname !== "/" && (
           <form className="mx-auto w-1/2">
@@ -122,16 +122,16 @@ const Header: FC<HeaderProps> = () => {
             <>
               <Link
                 to="/login"
-                className="bg-transparent hover:bg-yellow-600 text-dark font-bold py-1 px-2 rounded-l focus:outline-none dark:text-white"
+                className="bg-transparent bebas-neue-regular hover:bg-yellow-600 text-dark font-bold py-1 px-2 rounded-l focus:outline-none dark:text-white"
               >
                 {t("header.login")}
               </Link>
               <Link
                 to="/register"
-                className="bg-transparent hover:bg-gray-400 text-dark font-bold py-1 px-2 rounded-r focus:outline-none dark:text-white"
+                className="bg-transparent bebas-neue-regular hover:bg-gray-400 text-dark font-bold py-1 px-2 rounded-r focus:outline-none dark:text-white"
               >
                 <FaAlignLeft className="inline text-2xl" color="white" />{" "}
-                {t("header.register")}
+                {t("header.register").toUpperCase()}
               </Link>
             </>
           )}
@@ -143,9 +143,6 @@ const Header: FC<HeaderProps> = () => {
               onClick={() => setShowLanguageSelector(!showLanguageSelector)}
             >
               {languages.find((lang) => lang.code === currentLanguage)?.icon}
-              <span>
-                {languages.find((lang) => lang.code === currentLanguage)?.name}
-              </span>
             </button>
             {showLanguageSelector && (
               <div className="absolute right-0 mt-2 bg-[#161b33] border border-gray-700 rounded-lg shadow-lg w-48 z-10">

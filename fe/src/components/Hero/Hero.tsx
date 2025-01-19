@@ -24,9 +24,9 @@ const Hero: FC<HeroProps> = ({ label1, label2, description, hero = false }) => {
     e.preventDefault();
     setShowServers(!showServers);
   }
-  return (<div className="bg-cover bg-center py-8 mt-4">
+  return (<div className="bg-cover bg-center py-4 mt-4">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <img src="/images/logo.svg" className='mx-auto my-4' />
+      <img src="/images/logo.svg" className='mx-auto' />
       {hero ? (
         <>
           <h2 className="text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl px-2">
@@ -37,7 +37,7 @@ const Hero: FC<HeroProps> = ({ label1, label2, description, hero = false }) => {
         </>
       ) : (
         <>
-          <h2 className="text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl">
+          <h2 className="text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl mt-2">
             <span className="inline-block uppercase me-1">{t("hero.default.label1")}</span>
             <span className="inline-block text-[#facd05] ms-2">{t("hero.default.label2")}</span>
           </h2>
@@ -64,7 +64,7 @@ const Hero: FC<HeroProps> = ({ label1, label2, description, hero = false }) => {
               <input
                 type="search"
                 id="default-search"
-                className="block w-full p-2 ps-10 text-lg text-black placeholder-black border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="block bebas-neue-regular w-full p-2 ps-10 text-lg text-black placeholder-black border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder={t("hero.default.search_placeholder")}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
