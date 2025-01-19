@@ -67,106 +67,101 @@ const Header: FC<HeaderProps> = () => {
   };
 
   return (
-    <div className="bg-gradient-to-r from-[#133155] to-[#2A6CBB] text-white flex justify-center items-center">
-      <div className="py-4 flex justify-between items-center px-10 sm:px-16 md:px-24 lg:px-48 xl:px-96 w-full">
-        <div className="bebas-neue-regular">{t("header.promo")}</div>
-        {path.pathname !== "/" && (
-          <form className="mx-auto w-1/2">
-            <label
-              htmlFor="default-search"
-              className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+    <header className="fixed w-full bg-gradient-to-r from-[#133155] to-[#2A6CBB] mt-0 top-0 z-10">
+      <nav className="text-white py-2.5">
+        <div className="flex flex-wrap items-center justify-between max-w-screen-xl px-12 mx-auto">
+          <a href="/" className="flex items-center">
+            <span className="self-center bebas-neue-regular whitespace-nowrap">{t("header.promo")}</span>
+          </a>
+          <div className="flex items-center lg:order-2">
+            <Link
+              to="/login"
+              className="bg-transparent bebas-neue-regular hover:bg-yellow-600 text-dark font-bold py-1 px-2 rounded-l focus:outline-none dark:text-white"
             >
-              Search
-            </label>
-            <div className="relative w-full">
-              <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                <img src="/images/search_icon.svg" />
-              </div>
-              <input
-                type="search"
-                id="default-search"
-                className="block w-full p-2 ps-10 text-lg text-black placeholder-black border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder={t("hero.default.search_placeholder")}
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                required
-              />
+              {t("header.login")}
+            </Link>
+            <Link
+              to="/register"
+              className="bg-transparent bebas-neue-regular hover:bg-gray-400 text-dark font-bold py-1 px-2 rounded-r focus:outline-none dark:text-white"
+            >
+              <FaAlignLeft className="inline text-2xl" color="white" />{" "}
+              {t("header.register").toUpperCase()}
+            </Link>
+            <div className="relative">
               <button
-                type="button"
-                onClick={launchServers}
-                className="text-black absolute end-1.5 top-1.5 bottom-1.5 bg-[#f6b723] hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                className="flex items-center space-x-2 text-white focus:outline-none"
+                onClick={() => setShowLanguageSelector(!showLanguageSelector)}
               >
-                {t("hero.default.search_button")}
-                <img
-                  src="/images/caret_black.svg"
-                  className="inline-block p-2"
-                />
+                {languages.find((lang) => lang.code === currentLanguage)?.icon}
               </button>
+              {showLanguageSelector && (
+                <div className="absolute right-0 mt-2 bg-[#161b33] border border-gray-700 rounded-lg shadow-lg w-48 z-10">
+                  {languages.map((lang) => (
+                    <button
+                      key={lang.code}
+                      onClick={() => handleLanguageChange(lang.code)}
+                      className="flex items-center justify-between w-full px-4 py-2 hover:bg-gray-700 text-sm text-white focus:outline-none"
+                    >
+                      <div className="flex items-center space-x-2">
+                        {lang.icon}
+                        <span>{lang.name}</span>
+                      </div>
+                      {currentLanguage === lang.code && (
+                        <FaCheck className="text-yellow-400" />
+                      )}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
-            {(showServers || searchTerm) && (
-              <div className="justify-center flex mt-4 lg:mt-8 xl:mt-12 z-10 absolute inset-0">
-                <ServerMenu
-                  letter={""}
-                  servers={servers.flatMap((server) => server.title)}
+          </div>
+          <div className="items-center justify-between hidden w-full lg:flex lg:max-w-max lg:order-1" id="mobile-menu-2">
+            {path.pathname !== "/" && (<form className="mx-auto w-full md:w-72 lg:w-[600px]">
+              <label
+                htmlFor="default-search"
+                className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+              >
+                Search
+              </label>
+              <div className="relative w-full">
+                <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                  <img src="/images/search_icon.svg" />
+                </div>
+                <input
+                  type="search"
+                  id="default-search"
+                  className="block w-full p-2 ps-10 text-lg text-black placeholder-black border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder={t("hero.default.search_placeholder")}
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  required
                 />
+                <button
+                  type="button"
+                  onClick={launchServers}
+                  className="text-black absolute end-1.5 top-1.5 bottom-1.5 bg-[#f6b723] hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                >
+                  {t("hero.default.search_button")}
+                  <img
+                    src="/images/caret_black.svg"
+                    className="inline-block p-2"
+                  />
+                </button>
               </div>
-            )}
-          </form>
-        )}
-        <div className="flex items-center space-x-2 pr-6">
-          {user ? (
-            <>
-              <Logout /> <span className="px-1">Logout</span>
-            </>
-          ) : (
-            <>
-              <Link
-                to="/login"
-                className="bg-transparent bebas-neue-regular hover:bg-yellow-600 text-dark font-bold py-1 px-2 rounded-l focus:outline-none dark:text-white"
-              >
-                {t("header.login")}
-              </Link>
-              <Link
-                to="/register"
-                className="bg-transparent bebas-neue-regular hover:bg-gray-400 text-dark font-bold py-1 px-2 rounded-r focus:outline-none dark:text-white"
-              >
-                <FaAlignLeft className="inline text-2xl" color="white" />{" "}
-                {t("header.register").toUpperCase()}
-              </Link>
-            </>
-          )}
-
-          {/* Language Selector */}
-          <div className="relative">
-            <button
-              className="flex items-center space-x-2 text-white focus:outline-none"
-              onClick={() => setShowLanguageSelector(!showLanguageSelector)}
-            >
-              {languages.find((lang) => lang.code === currentLanguage)?.icon}
-            </button>
-            {showLanguageSelector && (
-              <div className="absolute right-0 mt-2 bg-[#161b33] border border-gray-700 rounded-lg shadow-lg w-48 z-10">
-                {languages.map((lang) => (
-                  <button
-                    key={lang.code}
-                    onClick={() => handleLanguageChange(lang.code)}
-                    className="flex items-center justify-between w-full px-4 py-2 hover:bg-gray-700 text-sm text-white focus:outline-none"
-                  >
-                    <div className="flex items-center space-x-2">
-                      {lang.icon}
-                      <span>{lang.name}</span>
-                    </div>
-                    {currentLanguage === lang.code && (
-                      <FaCheck className="text-yellow-400" />
-                    )}
-                  </button>
-                ))}
-              </div>
+              {(showServers || searchTerm) && (
+                <div className="justify-center flex mt-4 lg:mt-8 xl:mt-12 z-10 absolute inset-0">
+                  <ServerMenu
+                    letter={""}
+                    servers={servers.flatMap((server) => server.title)}
+                  />
+                </div>
+              )}
+            </form>
             )}
           </div>
         </div>
-      </div>
-    </div>
+      </nav>
+    </header>
   );
 };
 

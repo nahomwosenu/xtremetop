@@ -60,118 +60,120 @@ const Nav: FC<NavProps> = () => {
   ];
 
   return (
-    <nav className="bg-transparent border-0 border-b-2 border-yellow-400">
-      <div className="mx-auto px-10 sm:px-16 md:px-24 lg:px-48 xl:px-96">
-        <div className="flex items-center justify-between h-16">
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <button
-              onClick={toggleMobileMenu}
-              type="button"
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none"
-              aria-controls="mobile-menu"
-              aria-expanded={isMobileMenuOpen}
-            >
-              <span className="sr-only">Open main menu</span>
-              {isMobileMenuOpen ? (
-                <svg
-                  className="h-6 w-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              ) : (
-                <svg
-                  className="h-6 w-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h16m-7 6h7"
-                  />
-                </svg>
-              )}
-            </button>
-          </div>
+    <header className="w-full mt-2 md:mt-8 lg:mt-16 xl:mt-14 py-2.5">
+      <nav className="border-b border-yellow-400">
+        <div className="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto">
+          <div className="flex items-center justify-between h-16 px-12">
+            {/* Mobile menu button */}
+            <div className="md:hidden">
+              <button
+                onClick={toggleMobileMenu}
+                type="button"
+                className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none"
+                aria-controls="mobile-menu"
+                aria-expanded={isMobileMenuOpen}
+              >
+                <span className="sr-only">Open main menu</span>
+                {isMobileMenuOpen ? (
+                  <svg
+                    className="h-6 w-6"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                ) : (
+                  <svg
+                    className="h-6 w-6"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M4 6h16M4 12h16m-7 6h7"
+                    />
+                  </svg>
+                )}
+              </button>
+            </div>
 
-          {/* Navigation links */}
-          <div
-            className={`flex-1 flex items-center justify-between ${isMobileMenuOpen
-              ? "block bg-gray-700 z-10 mt-auto pt-4 w-full"
-              : "hidden"
-              } md:flex`}
-          >
-            <div className="flex items-center w-full">
-              {/* Adjust padding/margin to maintain fixed spacing */}
-              <div className="flex w-full justify-between">
-                {navLinks
-                  .filter((nav) => !nav?.auth || !!user)
-                  .map((link) =>
-                    link.route === "#" ? (
-                      <a
-                        key={link.id}
-                        className={
-                          "relative font-franklin text-white hover:bg-gray-700 hover:text-white px-5 py-5 rounded-md text-base font-medium " +
-                          (activeNav === link.id
-                            ? "bg-gray-500 bg-opacity-40 border-b-4 border-yellow-300"
-                            : "")
-                        }
-                        style={{ fontWeight: 700 }}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          setActiveNav(link.id);
-                          if (link.id === "select_game") {
-                            setSelectGameActive(!selectGameActive);
+            {/* Navigation links */}
+            <div
+              className={`flex-1 flex items-center justify-between ${isMobileMenuOpen
+                ? "block bg-gray-700 z-10 mt-auto pt-4 w-full"
+                : "hidden"
+                } md:flex`}
+            >
+              <div className="flex items-center w-full">
+                {/* Adjust padding/margin to maintain fixed spacing */}
+                <div className="flex w-full justify-between space-x-4">
+                  {navLinks
+                    .filter((nav) => !nav?.auth || !!user)
+                    .map((link) =>
+                      link.route === "#" ? (
+                        <a
+                          key={link.id}
+                          className={
+                            "relative font-franklin text-white hover:bg-gray-700 hover:text-white px-5 py-5 rounded-md text-xl font-medium min-w-max text-nowrap" +
+                            (activeNav === link.id
+                              ? "bg-gray-500 bg-opacity-40 border-b-4 border-yellow-300"
+                              : "")
                           }
-                        }}
-                      >
-                        {link.label}
-                        <GameCategoryDropdown isOpen={selectGameActive} />
-                        {link.id === "select_game" && (
-                          <img
-                            src="/images/caret.svg"
-                            className="inline-block p-2"
-                          />
-                        )}
-                      </a>
-                    ) : (
-                      <Link
-                        key={link.id}
-                        to={link.route}
-                        className={
-                          "text-white font-franklin hover:bg-gray-700 hover:text-white px-5 py-5 rounded-md text-base font-medium " +
-                          (activeNav === link.id
-                            ? "bg-gray-500 bg-opacity-40 border-b-4 border-yellow-300"
-                            : "")
-                        }
-                        style={{ fontWeight: 700 }}
-                        onClick={() => setActiveNav(link.id)}
-                      >
-                        {link.label}
-                      </Link>
-                    )
-                  )}
+                          style={{ fontWeight: 700 }}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setActiveNav(link.id);
+                            if (link.id === "select_game") {
+                              setSelectGameActive(!selectGameActive);
+                            }
+                          }}
+                        >
+                          {link.label}
+                          <GameCategoryDropdown isOpen={selectGameActive} />
+                          {link.id === "select_game" && (
+                            <img
+                              src="/images/caret.svg"
+                              className="inline-block p-2"
+                            />
+                          )}
+                        </a>
+                      ) : (
+                        <Link
+                          key={link.id}
+                          to={link.route}
+                          className={
+                            "text-white font-franklin hover:bg-gray-700 hover:text-white px-5 py-5 rounded-md text-xl font-medium  min-w-max text-nowrap" +
+                            (activeNav === link.id
+                              ? "bg-gray-500 bg-opacity-40 border-b-4 border-yellow-300"
+                              : "")
+                          }
+                          style={{ fontWeight: 700 }}
+                          onClick={() => setActiveNav(link.id)}
+                        >
+                          {link.label}
+                        </Link>
+                      )
+                    )}
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </header>
   );
 };
 

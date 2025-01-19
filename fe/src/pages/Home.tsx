@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <>
       <Header />
-      <div className="relative" style={{
+      <div className="" style={{
         backgroundImage: "url('/images/hero.png')", backgroundRepeat: "no-repeat", backgroundSize: "cover", // Ensures the image covers the entire div
         backgroundPosition: "center"
       }}>

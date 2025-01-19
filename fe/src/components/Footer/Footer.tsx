@@ -44,15 +44,15 @@ const Footer: FC<FooterProps> = () => {
   }, []);
 
   return (
-    <footer className='w-full text-[#687b92] font-roman'>
-      <div className='bg-[#133155] py-4 w-full h-auto'>
-        <div className='flex justify-between items-center mx-auto px-10 sm:px-16 md:px-24 lg:px-48 xl:px-96'>
-          <div className='flex justify-between items-center'>
-            <p className='text-sm text-white flex-1 md:text-left px-2'>
+    <footer className='text-[#687b92] font-roman'>
+      {/* First Row */}
+      <div className='bg-[#133155] py-4 w-full'>
+        <div className='justify-between items-center mx-auto max-w-screen-xl px-12'>
+          <div className='flex items-start flex-wrap'>
+            <p className='text-sm text-white md:text-left px-2'>
               {t('footer.links.connectWithUs')}
             </p>
-
-            <div className='flex space-x-4 px-2'>
+            <div className='flex space-x-4 text-white'>
               <a href='#' className='hover:text-white'>
                 <RiFacebookCircleFill size={20} />
               </a>
@@ -72,40 +72,47 @@ const Footer: FC<FooterProps> = () => {
                 <RiDiscordFill size={20} />
               </a>
             </div>
-          </div>
-          <div className='flex-1 text-sm md:text-right mt-2 md:mt-0'>
-            <a href='#' className='hover:text-blue-500 text-white mr-4'>
-              {t('footer.links.forum')}
-            </a>
-            <span className='mr-2 text-white'>|</span>
-            <a href='#' className='hover:text-blue-500 text-white mr-4'>
-              {t('footer.links.terms')}
-            </a>
-            <span className='mr-2 text-white'>|</span>
-            <a href='#' className='hover:text-blue-500 text-white mr-4'>
-              {t('footer.links.privacy')}
-            </a>
-            <span className='mr-2 text-white'>|</span>
-            <a href='#' className='hover:text-blue-500 text-white mr-4'>
-              {t('footer.links.faq')}
-            </a>
-            <span className='mr-2 text-white'>|</span>
-            <a href='#' className='hover:text-blue-500 text-white'>
-              {t('footer.links.contact')}
-            </a>
+
+            <div className='flex-1 text-sm md:text-right md:mt-0 flex-wrap'>
+              <a href='#' className='hover:text-blue-500 text-white mr-4'>
+                {t('footer.links.forum')}
+              </a>
+              <span className='mr-2 text-white'>|</span>
+              <a href='#' className='hover:text-blue-500 text-white mr-4'>
+                {t('footer.links.terms')}
+              </a>
+              <span className='mr-2 text-white'>|</span>
+              <a href='#' className='hover:text-blue-500 text-white mr-4'>
+                {t('footer.links.privacy')}
+              </a>
+              <span className='mr-2 text-white'>|</span>
+              <a href='#' className='hover:text-blue-500 text-white mr-4'>
+                {t('footer.links.faq')}
+              </a>
+              <span className='mr-2 text-white'>|</span>
+              <a href='#' className='hover:text-blue-500 text-white'>
+                {t('footer.links.contact')}
+              </a>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className='bg-[#161b33] flex items-center justify-center py-4 px-10 sm:px-16 md:px-24 lg:px-48 xl:px-96 w-full h-auto border-t border-t-[#F6B723]'>
-        <div className='flex justify-between items-center mx-auto px-2 md:px-1 w-full'>
+      {/* Second Row */}
+      <div className='bg-[#161b33] py-4 w-full h-auto border-t border-t-[#F6B723]'>
+        <div className='flex justify-between items-center mx-auto max-w-screen-xl px-12'>
           <div className='flex-1 text-center md:text-left text-white text-sm'>
             {t('footer.copyright').toUpperCase()}
           </div>
           <div className='flex-1 text-center text-sm text-white'>
             {t('footer.toplistReset')}
             <span>
-              {t('footer.timeRemaining', timeRemaining.days.toString(), timeRemaining.hours.toString(), timeRemaining.minutes.toString())}
+              {t(
+                'footer.timeRemaining',
+                timeRemaining.days.toString(),
+                timeRemaining.hours.toString(),
+                timeRemaining.minutes.toString()
+              )}
             </span>
           </div>
           <div className='flex-1 text-center md:text-right text-sm text-white'>
@@ -114,6 +121,7 @@ const Footer: FC<FooterProps> = () => {
         </div>
       </div>
     </footer>
+
   );
 }
 
