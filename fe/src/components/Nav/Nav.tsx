@@ -1,13 +1,17 @@
-import React, { FC, useContext, useEffect, useState } from 'react';
-import { useNav } from '../../context/NavContext';
-import { Link, useLocation } from 'react-router-dom';
-import GameCategoryDropdown from '../GameList/GameCategoryDropdown';
-import { useTranslation } from '../../context/TranslationContext';
-import { FaArrowDown, FaCaretDown, FaCaretSquareDown } from 'react-icons/fa';
-import { RiArrowDownCircleLine, RiArrowDownDoubleLine, RiArrowDownLine } from 'react-icons/ri';
-import { AuthContext } from '../../context/AuthContext';
+import React, { FC, useContext, useEffect, useState } from "react";
+import { useNav } from "../../context/NavContext";
+import { Link, useLocation } from "react-router-dom";
+import GameCategoryDropdown from "../GameList/GameCategoryDropdown";
+import { useTranslation } from "../../context/TranslationContext";
+import { FaArrowDown, FaCaretDown, FaCaretSquareDown } from "react-icons/fa";
+import {
+  RiArrowDownCircleLine,
+  RiArrowDownDoubleLine,
+  RiArrowDownLine,
+} from "react-icons/ri";
+import { AuthContext } from "../../context/AuthContext";
 
-interface NavProps { }
+interface NavProps {}
 
 const Nav: FC<NavProps> = () => {
   const { activeNav, setActiveNav } = useNav();
@@ -29,26 +33,36 @@ const Nav: FC<NavProps> = () => {
       setActiveNav(matchingNavLink.id);
     } else {
       // Optionally handle unmatched routes
-      setActiveNav('home');
+      setActiveNav("home");
     }
   }, [location.pathname, setActiveNav]);
 
   const { user } = useContext(AuthContext);
 
   const navLinks = [
-    { label: t('nav.home'), id: 'home', route: '/' },
-    { label: t('nav.add_server'), id: 'add_site', route: '/add-site' },
-    { label: t('nav.edit_account'), id: 'edit_account', route: '/edit-account', auth: true },
-    { label: t('nav.select_game'), id: 'select_game', route: '#' },
-    { label: t('nav.premium'), id: 'premium', route: '/premium' },
-    { label: t('nav.advertise'), id: 'advertise', route: '/advertise' },
-    { label: t('nav.last_servers'), id: 'last_servers', route: '/servers' },
-    { label: t('nav.dashboard'), id: 'dashboard', route: '/dashboard', auth: true },
+    { label: t("nav.home"), id: "home", route: "/" },
+    { label: t("nav.add_server"), id: "add_site", route: "/add-site" },
+    {
+      label: t("nav.edit_account"),
+      id: "edit_account",
+      route: "/edit-account",
+      auth: true,
+    },
+    { label: t("nav.select_game"), id: "select_game", route: "#" },
+    { label: t("nav.premium"), id: "premium", route: "/premium" },
+    { label: t("nav.advertise"), id: "advertise", route: "/advertise" },
+    { label: t("nav.last_servers"), id: "last_servers", route: "/servers" },
+    {
+      label: t("nav.dashboard"),
+      id: "dashboard",
+      route: "/dashboard",
+      auth: true,
+    },
   ];
 
   return (
     <nav className="bg-transparent border-0 border-b-2 border-yellow-400">
-      <div className="mx-auto px-8 md:px-16 lg:px-24">
+      <div className="mx-auto px-8 md:px-16 lg:px-64">
         <div className="flex items-center justify-between h-16">
           {/* Mobile menu button */}
           <div className="md:hidden">
@@ -98,10 +112,11 @@ const Nav: FC<NavProps> = () => {
 
           {/* Navigation links */}
           <div
-            className={`flex-1 flex items-center justify-between ${isMobileMenuOpen
-              ? "block bg-gray-700 z-10 mt-auto pt-4 w-full"
-              : "hidden"
-              } md:flex`}
+            className={`flex-1 flex items-center justify-between ${
+              isMobileMenuOpen
+                ? "block bg-gray-700 z-10 mt-auto pt-4 w-full"
+                : "hidden"
+            } md:flex`}
           >
             <div className="flex items-center w-full">
               {/* Adjust padding/margin to maintain fixed spacing */}
@@ -159,8 +174,6 @@ const Nav: FC<NavProps> = () => {
         </div>
       </div>
     </nav>
-
-
   );
 };
 

@@ -1,15 +1,31 @@
 import React, { FC, useContext, useState } from "react";
 import { FaUser, FaAlignLeft, FaCheck } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { US, GB, DE, FR, ES, IT, NL, BE, CZ, PT, SE, FI, GR, RO, PL } from "country-flag-icons/react/3x2";
+import {
+  US,
+  GB,
+  DE,
+  FR,
+  ES,
+  IT,
+  NL,
+  BE,
+  CZ,
+  PT,
+  SE,
+  FI,
+  GR,
+  RO,
+  PL,
+} from "country-flag-icons/react/3x2";
 import { useTranslation } from "../../context/TranslationContext";
 import { AuthContext } from "../../context/AuthContext";
-import Logout from '../../assets/icons/logout.svg?react';
+import Logout from "../../assets/icons/logout.svg?react";
 import { ServerContext } from "../../context/ServerContext";
 import ServerMenu from "../shared/ServerMenu";
 import { useSearch } from "../../context/SearchContext";
 
-interface HeaderProps { }
+interface HeaderProps {}
 
 const Header: FC<HeaderProps> = () => {
   const { currentLanguage, setLanguage, t } = useTranslation();
@@ -21,11 +37,10 @@ const Header: FC<HeaderProps> = () => {
   const { searchTerm, setSearchTerm } = useSearch();
   const path = useLocation();
 
-
   const launchServers = (e: any) => {
     e.preventDefault();
     setShowServers(!showServers);
-  }
+  };
 
   const languages = [
     { code: "en", name: "English (US)", icon: <US className="w-6 h-6" /> },
@@ -53,17 +68,19 @@ const Header: FC<HeaderProps> = () => {
 
   return (
     <div className="bg-gradient-to-r from-[#133155] to-[#2A6CBB] text-white flex justify-center items-center">
-      <div className="py-4 flex justify-between items-center px-8 md:px-16 lg:px-24 w-full">
-        <div className="bebas-neue-regular">{t('header.promo')}</div>
-        {
-          path.pathname !== '/' &&
+      <div className="py-4 flex justify-between items-center px-8 md:px-16 lg:px-64 w-full">
+        <div className="bebas-neue-regular">{t("header.promo")}</div>
+        {path.pathname !== "/" && (
           <form className="mx-auto w-1/2">
-            <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">
+            <label
+              htmlFor="default-search"
+              className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+            >
               Search
             </label>
             <div className="relative w-full">
               <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                <img src='/images/search_icon.svg' />
+                <img src="/images/search_icon.svg" />
               </div>
               <input
                 type="search"
@@ -80,62 +97,75 @@ const Header: FC<HeaderProps> = () => {
                 className="text-black absolute end-1.5 top-1.5 bottom-1.5 bg-[#f6b723] hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
                 {t("hero.default.search_button")}
-                <img src="/images/caret_black.svg" className='inline-block p-2' />
+                <img
+                  src="/images/caret_black.svg"
+                  className="inline-block p-2"
+                />
               </button>
-
             </div>
-            {
-              (showServers || searchTerm) && <div className="justify-center flex mt-4 lg:mt-8 xl:mt-12 z-10 absolute inset-0"><ServerMenu letter={''} servers={servers.flatMap((server) => server.title)} /></div>
-            }
+            {(showServers || searchTerm) && (
+              <div className="justify-center flex mt-4 lg:mt-8 xl:mt-12 z-10 absolute inset-0">
+                <ServerMenu
+                  letter={""}
+                  servers={servers.flatMap((server) => server.title)}
+                />
+              </div>
+            )}
           </form>
-        }
+        )}
         <div className="flex items-center space-x-2 pr-6">
-          {
-            user ? <>
+          {user ? (
+            <>
               <Logout /> <span className="px-1">Logout</span>
-            </> : <><Link
-              to="/login"
-              className="bg-transparent hover:bg-yellow-600 text-dark font-bold py-1 px-2 rounded-l focus:outline-none dark:text-white"
-            >
-              {t('header.login')}
-            </Link>
+            </>
+          ) : (
+            <>
+              <Link
+                to="/login"
+                className="bg-transparent hover:bg-yellow-600 text-dark font-bold py-1 px-2 rounded-l focus:outline-none dark:text-white"
+              >
+                {t("header.login")}
+              </Link>
               <Link
                 to="/register"
                 className="bg-transparent hover:bg-gray-400 text-dark font-bold py-1 px-2 rounded-r focus:outline-none dark:text-white"
               >
-                <FaAlignLeft className="inline text-2xl" color="white" /> {t('header.register')}
+                <FaAlignLeft className="inline text-2xl" color="white" />{" "}
+                {t("header.register")}
               </Link>
             </>
-          }
+          )}
 
           {/* Language Selector */}
           <div className="relative">
-            <button className="flex items-center space-x-2 text-white focus:outline-none" onClick={() => setShowLanguageSelector(!showLanguageSelector)}>
+            <button
+              className="flex items-center space-x-2 text-white focus:outline-none"
+              onClick={() => setShowLanguageSelector(!showLanguageSelector)}
+            >
               {languages.find((lang) => lang.code === currentLanguage)?.icon}
               <span>
-                {
-                  languages.find((lang) => lang.code === currentLanguage)
-                    ?.name
-                }
+                {languages.find((lang) => lang.code === currentLanguage)?.name}
               </span>
             </button>
-            {showLanguageSelector && <div className="absolute right-0 mt-2 bg-[#161b33] border border-gray-700 rounded-lg shadow-lg w-48 z-10">
-              {languages.map((lang) => (
-                <button
-                  key={lang.code}
-                  onClick={() => handleLanguageChange(lang.code)}
-                  className="flex items-center justify-between w-full px-4 py-2 hover:bg-gray-700 text-sm text-white focus:outline-none"
-                >
-                  <div className="flex items-center space-x-2">
-                    {lang.icon}
-                    <span>{lang.name}</span>
-                  </div>
-                  {currentLanguage === lang.code && (
-                    <FaCheck className="text-yellow-400" />
-                  )}
-                </button>
-              ))}
-            </div>}
+            {showLanguageSelector && (
+              <div className="absolute right-0 mt-2 bg-[#161b33] border border-gray-700 rounded-lg shadow-lg w-48 z-10">
+                {languages.map((lang) => (
+                  <button
+                    key={lang.code}
+                    onClick={() => handleLanguageChange(lang.code)}
+                    className="flex items-center justify-between w-full px-4 py-2 hover:bg-gray-700 text-sm text-white focus:outline-none"
+                  >
+                    <div className="flex items-center space-x-2">
+                      {lang.icon}
+                      <span>{lang.name}</span>
+                    </div>
+                    {currentLanguage === lang.code && (
+                      <FaCheck className="text-yellow-400" />
+                    )}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>
