@@ -12,7 +12,7 @@ const twoFARouter = require('./routes/2fa')
 const dbUri =
   process.platform === 'win32'
     ? 'mongodb://127.0.0.1:27017/tpg_dev'
-    : 'mongodb+srv://nahometete:nQrTPkfeQzHNV06x@cluster0.q5etcxu.mongodb.net/tpg_dev'
+    : ''
 
 const app = express()
 const corsOptions = {
